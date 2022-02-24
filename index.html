@@ -35,17 +35,7 @@
         oncomplete: function(data) {
           var jibunAddress = ""
 
-          if (data.jibunAddress == "") {
-            jibunAddress = data.autoJibunAddress
-          } else if (data.autoJibunAddress == "") {
-            jibunAddress = data.jibunAddress
-          }
-
-          var postData = {
-              roadAddress : data.roadAddress,
-              jibunAddress : jibunAddress,
-              zonecode : data.zonecode
-          };
+          var fullAddr = data.address;
           
           window.TestApp.processData(data.zonecode + ", " + fullRoadAddr);
 
