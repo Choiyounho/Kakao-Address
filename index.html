@@ -31,8 +31,8 @@
         window.webkit.messageHandlers.callBackHandler.postMessage(postData);
     }
     
-    function postMessageToAndroid(roadAddress, jibunAddress) {
-        window.NewlinkBridge.address(roadAddress, jibunAddress);
+    function postMessageToAndroid(roadAddress) {
+        window.NewlinkBridge.address(roadAddress);
     }
 
     var element_layer = document.getElementById('layer');
@@ -74,7 +74,7 @@
                     extraAddr : extraAddr
                 };
                
-                window.postMessageToAndroid(addr, jibunAddress);
+                window.postMessageToAndroid(addr);
             
             },
 
