@@ -73,12 +73,8 @@
                     sidoCode : data.sidoEnglish,
                     extraAddr : extraAddr
                 };
-                
-                var roadAddress = addr;
-                var zonecode = data.zonecode;
-                var sidocode = data.sidoEnglish;
-        
-                window.postMessageToAndroid(roadAddress, zonecode, sidocode);
+               
+                window.postMessageToAndroid(addr, addr, addr);
             
             },
 
