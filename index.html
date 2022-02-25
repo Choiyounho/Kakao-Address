@@ -31,8 +31,8 @@
         window.webkit.messageHandlers.callBackHandler.postMessage(postData);
     }
     
-    function postMessageToAndroid(roadAddress) {
-        window.NewlinkBridge.address(roadAddress);
+    function postMessageToAndroid(roadAddress, sidosidoEnglish) {
+        window.NewlinkBridge.address(roadAddress, sidosidoEnglish);
     }
 
     var element_layer = document.getElementById('layer');
@@ -42,13 +42,18 @@
                 var jibunAddress = "qweqwe"; //지번 주소
                 var addr = ''; // 주소 변수
                 var extraAddr = ''; // 참고항목 변수
+                var zonecode = "";
 
-
+                var sidosidoEnglish = "";
                 //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
                 if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
                     addr = data.roadAddress;
+                    sidosidoEnglish = data.sidoEnglish;
+                    zonecode = data.zonecode;
                 } else { // 사용자가 지번 주소를 선택했을 경우(J)
                     addr = data.jibunAddress;
+                    sidosidoEnglish = data.sidoEnglish;
+                     zonecode = data.zonecode;
                 }
                 // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
                 if (data.userSelectedType === 'R') {
@@ -73,8 +78,10 @@
                     sidoCode : data.sidoEnglish,
                     extraAddr : extraAddr
                 };
+                
+                
                
-                window.postMessageToAndroid(addr);
+                window.postMessageToAndroid(addr, sidosidoEnglish);
             
             },
 
