@@ -30,7 +30,7 @@
         window.webkit.messageHandlers.callBackHandler.postMessage(postData);
     }
     function postMessageToAndroid(zonecode, addr, extraAddr) {
-        window.NewlinkBridge.address(zonecode, addr, extraAddr);
+        
     }
     var element_layer = document.getElementById('layer');
     function execDaumPostcode() {
@@ -72,31 +72,7 @@
                 };
 
 
-                if(/Android/i.test(navigator.userAgent)) {
-                    window.postMessageToAndroid(zonecode, addr, extraAddr);
-                } else if(/iPhone|iPad/i.test(navigator.userAgent)) {
-                    window.postMessageToiOS(postData);
-                } else {
-
-                }
-
-
-
-
-
-
-                // if (data.jibunAddress == "") {
-                //         jibunAddress = data.autoJibunAddress
-                // } else if (data.autoJibunAddress == "") {
-                //         jibunAddress = data.jibunAddress
-                // }
-                //     var postData = {
-                //         roadAddress : data.roadAddress,
-                //         jibunAddress : jibunAddress,
-                //         zonecode : data.zonecode
-                //     };
-                //     window.postMessageToiOS(postData);
-                //     window.postMessageToAndroid(zonecode, roadAddress, jibunAddress);
+                window.NewlinkBridge.address(zonecode, addr, extraAddr);
             },
 
                 width : '100%',
