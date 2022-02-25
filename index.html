@@ -30,6 +30,10 @@
     function postMessageToiOS(postData) {
         window.webkit.messageHandlers.callBackHandler.postMessage(postData);
     }
+    
+    function postMessageToAndroid(addr) {
+        window.NewlinkBridge.address(addr);
+    }
 
     var element_layer = document.getElementById('layer');
     function execDaumPostcode() {
@@ -70,7 +74,7 @@
                     extraAddr : extraAddr
                 };
         
-                window.NewlinkBridge.address(addr);
+                window.postMessageToAndroid(addr);
             
             },
 
