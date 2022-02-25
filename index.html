@@ -1,6 +1,6 @@
 <html lang="ko">
 <head>
-    <title>주소 찾기2</title>
+    <title>주소 찾기</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0"/>
 </head>
@@ -8,7 +8,8 @@
 <body onload=execDaumPostcode()>
 <div id = "layer" style = "display:block; position:absolute; overflow:hidden; z-index:1; -webkit-overflow-scrolling:touch; ">
 </div>
-<script src="https://spi.maps.daum.net/imap/map_js_init/postcode.v2.js"></script>
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
 <script>
     window.addEventListener('message', onReceivedPostMessage, false);
     function onReceivedPostMessage(event){
@@ -24,12 +25,7 @@
         var params = data.params;
         console.log("onReceivedActivityMessageViaJavascriptInterface"+event);
     }
-    function postMessageToiOS(postData) {
-        window.webkit.messageHandlers.callBackHandler.postMessage(postData);
-    }
-    function postMessageToAndroid(zonecode, addr, extraAddr) {
-        
-    }
+    
     var element_layer = document.getElementById('layer');
     function execDaumPostcode() {
         new daum.Postcode({
