@@ -37,7 +37,7 @@
     function execDaumPostcode() {
         new daum.Postcode({
             oncomplete: function(data) {
-                var jibunAddress = "qweqweqwe"; //지번 주소
+                var jibunAddress = ""; //지번 주소
                 var addr = ''; // 주소 변수
                 var extraAddr = ''; // 참고항목 변수
 
@@ -71,10 +71,8 @@
                     sidoCode : data.sidoEnglish,
                     extraAddr : extraAddr
                 };
-
-
         
-                window.NewlinkBridge.address(jibunAddress);
+                window.NewlinkBridge.address(zonecode, addr, extraAddr);
              
             },
 
