@@ -31,8 +31,8 @@
         window.webkit.messageHandlers.callBackHandler.postMessage(postData);
     }
     
-    function postMessageToAndroid(addr) {
-        window.NewlinkBridge.address(addr);
+    function postMessageToAndroid(roadAddress, zonecode, sidocode) {
+        window.NewlinkBridge.address(roadAddress, zonecode, sidocode);
     }
 
     var element_layer = document.getElementById('layer');
@@ -73,8 +73,12 @@
                     sidoCode : data.sidoEnglish,
                     extraAddr : extraAddr
                 };
+                
+                var roadAddress = addr;
+                var zonecode = data.zonecode;
+                var sidocode = data.sidoEnglish;
         
-                window.postMessageToAndroid(addr);
+                window.postMessageToAndroid(roadAddress, zonecode, sidocode);
             
             },
 
