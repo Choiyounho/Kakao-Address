@@ -5,13 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0"/>
 </head>
-
 <body onload=execDaumPostcode()>
 <div id = "layer" style = "display:block; position:absolute; overflow:hidden; z-index:1; -webkit-overflow-scrolling:touch; ">
 </div>
 <script src="https://spi.maps.daum.net/imap/map_js_init/postcode.v2.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-
 <script>
     window.addEventListener('message', onReceivedPostMessage, false);
     function onReceivedPostMessage(event){
@@ -30,9 +28,11 @@
     function postMessageToiOS(postData) {
         window.webkit.messageHandlers.callBackHandler.postMessage(postData);
     }
-    
-    function postMessageToAndroid(test) {
-        window.NewlinkBridge.address(test);
+
+    function postMessageToAndroid(roadAddress, sidosidoEnglish) {
+        window.NewlinkBridge.address(roadAddress, sidosidoEnglish);
+    function postMessageToAndroid(roadAddress, sidosidoEnglish, zonecode) {
+        window.NewlinkBridge.address(roadAddress, sidosidoEnglish, zonecode);
     }
 
     var element_layer = document.getElementById('layer');
@@ -43,7 +43,6 @@
                 var addr = ''; // 주소 변수
                 var extraAddr = ''; // 참고항목 변수
                 var zonecode = "";
-
                 var sidosidoEnglish = "";
                 //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
                 if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
@@ -70,7 +69,6 @@
                     if (extraAddr !== '') {
                         extraAddr = ' (' + extraAddr + ')';
                     }
-
                 }
                 var postData = {
                     roadAddress : addr,
@@ -78,16 +76,12 @@
                     sidoCode : data.sidoEnglish,
                     extraAddr : extraAddr
                 };
-                
-                
-                var test = {
-                    q : 'q',
-                    w : 'w',
-                    e : 'e'
-                };
-               
-                window.postMessageToAndroid(test);
-            
+
+
+
+                window.postMessageToAndroid(addr, sidosidoEnglish);
+                window.postMessageToAndroid(addr, sidosidoEnglish, zonecode);
+
             },
 
                 width : '100%',
